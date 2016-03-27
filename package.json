@@ -1,0 +1,33 @@
+{
+  "name": "kluid",
+  "version": "0.0.1",
+  "description": "Copy new UUID to clipboard",
+  "main": "./lib/index.js",
+  "preferGlobal": "true",
+  "bin": {
+    "kluid": "bin/kluid.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkaung/kluid.git"
+  },
+  "keywords": [
+    "UUID",
+    "GUID",
+    "clipboard",
+    "copy"
+  ],
+  "author": "Kevin Aung <kevin.aung@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kkaung/kluid/issues"
+  },
+  "homepage": "https://github.com/kkaung/kluid#readme",
+  "dependencies": {
+    "copy-paste": "^1.1.4",
+    "node-uuid": "^1.4.7"
+  }
+}
