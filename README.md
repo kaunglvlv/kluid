@@ -1,3 +1,4 @@
+![kluid](/img/logo.png)
 kluid
 =====
 
