@@ -1,9 +1,15 @@
 import * as packageDetail from '../package.json';
 import clipboard from 'copy-paste';
 import colors from 'colors';
-import { Command } from 'commander';
-import { CliName, KluidOptions } from './definitions';
-import { createUuid } from './factories';
+import { Command, Option } from 'commander';
+import { CliName, KluidOptions, UidType } from './definitions';
+import { FactoryType, createUuid, createKsuid, createUlid } from './factories';
+
+const factories: Record<UidType, FactoryType> = {
+  uuid: createUuid,
+  ksuid: createKsuid,
+  ulid: createUlid,
+};
 
 export default class Program {
   static run(): void {
@@ -12,15 +18,22 @@ export default class Program {
 
     program
       .description('Create a unique identifier to the clipboard')
-      .option('-e, --empty', 'create empty uuid')
+      .addOption(
+        new Option('-u, --use <type>', 'uid type')
+          .choices(['uuid', 'ksuid', 'ulid'])
+          .default('uuid')
+      )
+      .addOption(new Option('-e, --empty', 'create empty uuid'))
       ;
 
     program.parse();
 
     const options = program.opts() as KluidOptions;
-    const id = createUuid(options);
+    const factory = factories[options.use];
 
+    const id = factory(options);
     clipboard.copy(id);
+
     console.log(colors.green(`${id}`));
   }
 }
