@@ -1,12 +1,13 @@
 {
   "name": "kluid",
-  "version": "0.0.1",
-  "description": "Copy new UUID to clipboard",
-  "main": "./lib/index.js",
+  "version": "1.0.0",
+  "description": "Copy new unique identifier to clipboard",
+  "main": "./dist/src/index.js",
   "bin": {
     "kluid": "bin/kluid.js"
   },
   "scripts": {
+    "build": "tsc",
     "start:dev": "tsc && node ./bin/kluid.js"
   },
   "repository": {
